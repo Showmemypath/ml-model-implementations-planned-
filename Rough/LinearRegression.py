@@ -1,5 +1,7 @@
 import sys
 from typing import *
+import pandas as pd
+import numpy as np
 
 
 class LinearRegressor:
@@ -30,17 +32,15 @@ class LinearRegressor:
   def Predict(self,x):
     return self.__slope * x + self.__intercept
 
-  @overload
-  def diff(self, b : int, args,slope = None ,yintercept = None):
-    summ = 0
-    for i in range(len(args.iloc[:,0])):
-      hx = self.line(args.iloc[i,0] ,slope ,yintercept)
-      yx = args.iloc[i:1]
-      summ += hx - yx
+  def diff1(self, args,slope = None ,yintercept = None):
+    a = args.iloc[:,0].to_numpy()
+    b = args.iloc[:,1].to_numpy()
+    theta1a = slope * a
+    theta0_plus_theta1a = yintercept + theta1a
+    summ = sum(theta0_plus_theta1a - b )
     return summ
 
-  @overload
-  def diff(self,b : str, args,slope = None,yintercept = None):
+  def diff2(self, args,slope = None,yintercept = None):
     summ = 0
     for i in range(len(args.iloc[:,0])):
       hx = self.line(args.iloc[i,0] ,slope ,yintercept)
@@ -68,7 +68,7 @@ class LinearRegressor:
         return True
       else:
         return False
-
+"""
   def linearregressor(self,args) -> LinearRegressor:
     theta0 = self.__intercept
     theta1 = self.__slope
@@ -95,8 +95,18 @@ class LinearRegressor:
         theta0 = theta0 - self.learning_rate*(1/len(args.iloc[:,0])) * self.diff(1, yintercept = theta0, slope = theta1)
       else:
         print('d')
-        break
-
+        break"""
+  def linearregressor(self,args)->LinearRegressor:
+    theta0 = self.__intercept
+    theta1 = self.__slope
+    a = b = 100
+    while True:
+      if (self.converfence(a,theta0),self.convergence(b,theta1))==(False,False):
+        a = theta0
+        theta0 = theta0 - self.learning_rate*(1/len(args.iloc[:,0]))*self.diff1(args,yintercept = theta0 , slope = theta1)
+        b = theta1
+        theta1 = theta1 - 
+  
     print('welcome')
 
     self.__intercept = theta0
