@@ -16,10 +16,6 @@ ml-projects/
 │   .                           # (more project notebooks)
 │   .                           
 │   .                           
-│   ├── nyc_311_sample.csv      # (datasets)
-│   .                           # (other datasets if any)
-│   .                           
-│   .                           
 │   └── requirements.txt        # (libraries needed to run projects)
 │
 ├── Rough/                      # (experiments, practice, messy work)
