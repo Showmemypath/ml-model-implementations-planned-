@@ -9,6 +9,7 @@ ml-projects/
 ├── notes/                      # key insights worth storing
 │
 ├── Projects/                   # main folder containing all your projects
+│   ├── datasets/               # datasets
 │   ├── Project descriptions/   # brief details/ideas about each project
 │   ├── Project_1.ipynb         # Wine quality prediction
 │   ├── Project_2.ipynb         # Response time prediction
